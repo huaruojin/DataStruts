@@ -7,6 +7,10 @@
  */
 package Demo;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.util.Calendar;
+
 /**
  * @author Administrator
  * @date 2021/7/1311:51
@@ -19,6 +23,14 @@ public class Test  {
 	}
 
 	public static void main(String[] args) {
+		new InvocationHandler() {
+			@Override
+			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+				method.invoke(proxy);
+				return null;
+			}
+		};
+		Calendar.getInstance();
 
 
 	}
